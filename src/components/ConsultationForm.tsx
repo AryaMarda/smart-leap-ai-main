@@ -43,9 +43,10 @@ const ConsultationForm = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-
+    console.log("formdata: ", formData);
+    
     // Basic validation
-    if (!formData.name || !formData.businessName || !formData.industry || !formData.whatsappNumber) {
+    if (!formData.name || !formData.businessName || !formData.industry || !formData.whatsappNumber || !formData.email) {
       toast({
         title: "Please fill all fields",
         description: "All fields are required to book your consultation.",
@@ -55,23 +56,45 @@ const ConsultationForm = () => {
       return;
     }
 
-    // Simulate API call
-    setTimeout(() => {
+    try {
+      const response = await fetch("https://aryamarda.app.n8n.cloud/webhook/44ab05f3-78d3-4eae-9884-9a161239d1e0", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        toast({
+          title: "Consultation Booked Successfully!",
+          description: "We will contact you via WhatsApp within 24 hours to finalize your consultation time.",
+        });
+        // Reset form
+        setFormData({
+          name: "",
+          businessName: "",
+          industry: "",
+          email: "",
+          whatsappNumber: ""
+        });
+      } else {
+        toast({
+          title: "Error submitting form",
+          description: "Please try again later.",
+          variant: "destructive"
+        });
+      }
+    } catch (error) {
+      console.log(error)
       toast({
-        title: "Consultation Booked Successfully!",
-        description: "We will contact you via WhatsApp within 24 hours to finalize your consultation time.",
+        title: "Error submitting form",
+        description: "Please check your internet connection and try again.",
+        variant: "destructive"
       });
+    } finally {
       setIsSubmitting(false);
-      
-      // Reset form
-      setFormData({
-        name: "",
-        businessName: "",
-        industry: "",
-        email: "",
-        whatsappNumber: ""
-      });
-    }, 1000);
+    }
   };
 
   const handleInputChange = (field: keyof FormData, value: string) => {
@@ -157,7 +180,7 @@ const ConsultationForm = () => {
                 
                 <div className="space-y-2">
                   <Label htmlFor="email" className="text-sm font-medium text-foreground">
-                    Email Address (Optional)
+                    Email Address *
                   </Label>
                   <Input
                     id="email"
@@ -166,6 +189,7 @@ const ConsultationForm = () => {
                     value={formData.email}
                     onChange={(e) => handleInputChange("email", e.target.value)}
                     className="h-12"
+                    required
                   />
                 </div>
                 
