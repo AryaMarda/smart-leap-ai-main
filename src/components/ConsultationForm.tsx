@@ -200,7 +200,7 @@ const ConsultationForm = () => {
                   <Input
                     id="whatsappNumber"
                     type="tel"
-                    placeholder="+91 9876543210"
+                    placeholder="9876543210"
                     value={formData.whatsappNumber}
                     onChange={(e) => handleInputChange("whatsappNumber", e.target.value)}
                     className="h-12"
