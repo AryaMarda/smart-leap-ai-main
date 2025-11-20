@@ -25,7 +25,7 @@ const problems = [
 
 const ProblemSection = () => {
   return (
-    <section className="py-20 bg-background">
+    <section className="py-20 pb-0 bg-background">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
@@ -56,7 +56,7 @@ const ProblemSection = () => {
           ))}
         </div>
         <br></br>
-        <div className="text-center mb-16">
+        <div className="text-center">
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             You're not alone. These are the most common challenges we help Indian business owners solve.
           </p>
