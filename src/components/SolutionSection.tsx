@@ -33,7 +33,7 @@ const SolutionSection = ({ onBookConsultation }: SolutionSectionProps) => {
           </h2>
           <div className="max-w-3xl mx-auto space-y-6">
             <p className="text-lg text-muted-foreground leading-relaxed">
-              The first step is simple: have a conversation. No complex details, no technical knowledge needed. 
+              The first step is simple: Talk to us. No complex details, no technical knowledge needed. 
               Our experts will listen to your challenges and show you exactly how AI can help your specific business.
             </p>
             

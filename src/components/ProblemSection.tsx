@@ -31,9 +31,6 @@ const ProblemSection = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             Are These Your Daily Headaches?
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            You're not alone. These are the most common challenges we help Indian business owners solve.
-          </p>
         </div>
         
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -57,6 +54,12 @@ const ProblemSection = () => {
               </div>
             </div>
           ))}
+        </div>
+        <br></br>
+        <div className="text-center mb-16">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            You're not alone. These are the most common challenges we help Indian business owners solve.
+          </p>
         </div>
       </div>
     </section>
